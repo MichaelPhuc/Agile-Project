@@ -1,7 +1,9 @@
 nav {
     margin-top: 0;
 }
-
+body{
+     font-family: 'Gugi', cursive;
+}
 .background {
     background-image: url("../Images/background2.jpg");
     background-attachment: fixed;
@@ -10,8 +12,26 @@ nav {
     background-size: cover;
     height: 100%;
 }
+.background2{
+    background-image: url("../Images/backgroundnight.jpg");
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+    overflow: hidden;
+}
 #backgroundwinlose {
     background-image: url("../Images/backgroundwinlose.jpg");
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+}
+
+.backgroundfight {
+    background-image: url("../Images/backgroundfight2.jpg");
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
@@ -34,7 +54,6 @@ nav {
 .title {
     text-align: Center;
     color: #E3E3E3;
-    font-family: 'Gugi', cursive;
     font-size: 53px;
 }
 
@@ -44,7 +63,6 @@ nav {
 
 .nav_text{
     color: #E3E3E3;
-    font-family: 'Gugi', cursive;
     font-size: 20px;
 }
 
@@ -99,4 +117,27 @@ nav {
     margin: 300px 0px 200px 0px ;
 }
 
+a {
+    text-decoration: none;
+    display: inline-block;
+    padding: 8px 16px;
+}
 
+a:hover {
+    color: black;
+    text-decoration: none;
+}
+
+.previous {
+    background-color: #f1f1f1;
+    color: black;
+}
+
+.next {
+    background-color: #f1f1f1;
+    color: black;
+}
+
+.round {
+    border-radius: 50%;
+}
