@@ -13,50 +13,60 @@
 <body class="backgroundstore">
 {{> header}}
 {{> nav_bar_store}}
-<div class="container" >
-    <div class="row" >
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 lightbox3">
+            <h1>Character</h1>
+            <img src="Images/myfamily.jpg">
+        </div>
         <div class="col-md-4 lightbox2">
             <h1>Weapons</h1>
 
+
             <div class="col-md-4 lightbox2">
-                <img src="Images/sword.png" height="75" width="75" id="sword">
+                <img src="Images/Weapons/longsword.png" height="75" width="75" id="sword">
             </div>
-            <p>Two Handed Sword</p>
+
             <ul>
-                <li>+10 Damage</li>
+                <li>Long Sword</li>
+                <li>+3 Damage</li>
+                <li>+3 HP</li>
+                <li class="gold">50 Gold</li>
             </ul>
-            <p class="gold">30 Gold <Br></p>
             <input type="submit" class="btn btn-dark" value="Buy">
 
             <br><br>
 
             <div class="col-md-4 lightbox2">
-                <img src="Images/knife.png" height="75" width="75" id="sword">
+                <img src="Images/Weapons/greatsword.png" height="75" width="75" id="sword">
             </div>
-            <p>Dagger</p>
             <ul>
-                <li>+40 Damage</li>
+                <li>Great Sword</li>
+                <li>+7 Damage</li>
+                <li>+7 HP</li>
+                <li class="gold">100 Gold</li>
             </ul>
-            <p class="gold">80 Gold <Br></p>
             <input type="submit" class="btn btn-dark" value="Buy">
 
             <br><br>
 
             <div class="col-md-4 lightbox2">
-                <img src="Images/katana.png" height="75" width="75" id="sword">
+                <img src="Images/Weapons/katana.png" height="75" width="75" id="sword">
             </div>
-            <p>Katana</p>
             <ul>
-                <li>+90 Damage</li>
+                <li>Katana</li>
+                <li>+20 Damage</li>
+                <li>+20 HP</li>
+                <li class="gold">200 Gold</li>
             </ul>
-            <p class="gold">150 Gold<Br></p>
             <input type="submit" class="btn btn-dark" value="Buy">
 
         </div>
 
         <div class="col-md-4 lightbox3">
-            <h1><img src="Images/gold.png" height="50" width="50"> Currency</h1>
-
+            <h1>Character Info</h1>
+            {{> character_stats}}
+            <p><img src="Images/gold.png" height="50" width="50"> Currency</p>
             <p class="gold">20000 Gold</p>
         </div>
 

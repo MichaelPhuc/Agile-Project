@@ -3,7 +3,7 @@
 // initialize firebase
 // const functions = require('firebase-functions');
 const admin = require('firebase-admin');
-const serviceAccount = require('../Agile-Project/servicekey.json');
+const serviceAccount = require('../Agile-Project-master/servicekey.json');
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount)
 });
@@ -81,13 +81,51 @@ app.get('/index_b', async (request, response) => {
     })
 });
 
-app.get('/store', (request, response) => {
-    response.render('store.hbs', {
-        title_page: 'Store',
-        header: 'Store',
-        username: user
-    })
+app.get('/store', async (request, response) => {
+    if (authentication === false) {
+        response.redirect('/')
+    } else {
+        var exist = await user_db.check_character_exist(user_email);
+        if (exist === true) {
+            try {
+                var users_character = await fbdb.collection('characters').doc(user_email).get();
+                var character_name = await users_character.data()['character_name'];
+                var health = await users_character.data()['character_health'];
+                var dps = await users_character.data()['character_dps']
+
+                response.render('store.hbs', {
+                    title_page: 'Store',
+                    header: 'Store',
+                    username: f_name,
+                    character_name: `${character_name}`,
+                    character_health: `${health}`,
+                    character_dps: `${dps}`
+                })
+            } catch (e) {
+                response.render('character.hbs', {
+                    title_page: 'My Character Page',
+                    header: 'Character Stats',
+                    username: f_name,
+                    character_name: 'CREATE CHARACTER NOW',
+                    character_health: 'CREATE CHARACTER NOW',
+                    character_dps: 'CREATE CHARACTER NOW'
+                })
+            }
+        } else {
+            response.render('character.hbs', {
+                title_page: 'My Character Page',
+                header: 'Character Stats',
+                username: f_name,
+                character_name: 'CREATE CHARACTER NOW',
+                character_health: 'CREATE CHARACTER NOW',
+                character_dps: 'CREATE CHARACTER NOW'
+            })
+        }
+    }
+
+
 });
+
 
 app.post('/user_logging_in', async (request, response) => {
     var email = request.body.email;
