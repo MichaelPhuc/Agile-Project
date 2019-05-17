@@ -22,8 +22,9 @@ var add_new_user = (first_name, last_name, email, password, password_repeat) => 
         fbdb.collection("users").doc(email).set({
             f_name: first_name,
             l_name: last_name,
+            hbucks: 0,
             loss: 0,
-            win: 0,
+            win: 0
         })
             .then(function() {
                 console.log("Document written with ID: ", userid);
@@ -35,14 +36,38 @@ var add_new_user = (first_name, last_name, email, password, password_repeat) => 
     }
 };
 
+var login_check = async (email, password) => {
+
+    await firebase.auth().signInWithEmailAndPassword(email, password)
+    .catch(function(error) {
+        var errorCode = error.code;
+        var errorMessages = error.message;
+        console.log('error' + error.message);
+        return 'Login Failed'
+        })    
+};
+
+var logout = async (email, password) => {
+
+    await firebase.auth().signOut().then(function() {
+        // Sign-out successful.
+    }).catch(function(error) {
+        var errorCode = error.code;
+        var errorMessages = error.message;
+        console.log('error' + error.message);
+        return 'Logout Failed'
+    });
+};
+
 var check_character_exist = async (email) => {
-    var ref = await fbdb.collection('characters').doc(email).get()
-    ref2 = ref.exists
+    var ref = await fbdb.collection('characters').doc(email).get();
+    ref2 = ref.exists;
     return ref2
 };
 
 module.exports = {
     add_new_user: add_new_user,
+    login_check: login_check,
     check_character_exist: check_character_exist
 };
 
